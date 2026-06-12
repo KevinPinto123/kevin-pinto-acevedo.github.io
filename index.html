@@ -23,24 +23,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 <style>
   :root {
-    --bg: #080C14;
-    --surface: #0D1421;
-    --surface2: #111B2E;
-    --border: #1E2E47;
-    --accent: #00D4FF;
-    --accent2: #7B61FF;
-    --accent3: #00FF88;
-    --text: #E8EDF5;
-    --muted: #6B7FA3;
-    --card: #0F1C30;
+    --bg: #080808;
+    --surface: #101010;
+    --surface2: #181818;
+    --border: #262626;
+    --accent: #E63946;
+    --accent2: #B71C1C;
+    --accent3: #F0F0F0;
+    --text: #F0F0F0;
+    --muted: #7A7A7A;
+    --card: #111111;
     --nav-height: 68px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     background:
-      radial-gradient(circle at 78% 12%, rgba(123,97,255,0.12), transparent 28rem),
-      radial-gradient(circle at 12% 28%, rgba(0,212,255,0.08), transparent 24rem),
+      radial-gradient(circle at 78% 12%, rgba(183,28,28,0.18), transparent 28rem),
+      radial-gradient(circle at 12% 28%, rgba(230,57,70,0.07), transparent 24rem),
       var(--bg);
     color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
@@ -74,8 +74,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(230,57,70,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230,57,70,0.025) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -401,8 +401,8 @@
 
   /* PHOTO FRAME GLOW */
   @keyframes frameGlow {
-    0%, 100% { box-shadow: 30px 30px 70px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,255,0.08); }
-    50% { box-shadow: 30px 30px 70px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,255,0.18), 0 0 60px rgba(123,97,255,0.08); }
+    0%, 100% { box-shadow: 30px 30px 70px rgba(0,0,0,0.7), 0 0 20px rgba(230,57,70,0.1); }
+    50% { box-shadow: 30px 30px 70px rgba(0,0,0,0.7), 0 0 50px rgba(230,57,70,0.3), 0 0 90px rgba(183,28,28,0.15); }
   }
 
   /* SCROLL INDICATOR */
@@ -1006,9 +1006,168 @@
     }
     .reveal { opacity: 1; transform: none; }
   }
+
+  /* ══════════════════════════════════
+     KEDEV OVERLAY — ANIMACIÓN LOGO
+  ══════════════════════════════════ */
+  .kedev-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    overflow: hidden;
+  }
+  .kedev-overlay.kv-visible { opacity: 1; }
+
+  .kedev-rings {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .kedev-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(230,57,70,0.5);
+    width: 300px; height: 300px;
+    animation: kvRing 2s ease-out infinite;
+  }
+  .kedev-ring:nth-child(2) { animation-delay: 0.5s; }
+  .kedev-ring:nth-child(3) { animation-delay: 1s; }
+  .kedev-ring:nth-child(4) { animation-delay: 1.5s; }
+  @keyframes kvRing {
+    0%   { transform: scale(0.3); opacity: 0.9; border-color: rgba(230,57,70,0.7); }
+    100% { transform: scale(3.5); opacity: 0; border-color: rgba(230,57,70,0); }
+  }
+
+  .kedev-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(230,57,70,0.04) 3px,
+      rgba(230,57,70,0.04) 4px
+    );
+    pointer-events: none;
+    animation: kvScan 2s linear infinite;
+  }
+  @keyframes kvScan {
+    from { background-position: 0 0; }
+    to   { background-position: 0 120px; }
+  }
+
+  .kedev-glow-bg {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(230,57,70,0.25) 0%, transparent 70%);
+    animation: kvGlowPulse 1.5s ease-in-out infinite;
+  }
+  @keyframes kvGlowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50%       { transform: scale(1.2); opacity: 1; }
+  }
+
+  .kedev-img-wrap { position: relative; z-index: 2; }
+  .kedev-logo {
+    width: min(320px, 72vw);
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(230,57,70,0.9)) drop-shadow(0 0 80px rgba(183,28,28,0.5));
+    display: block;
+  }
+  .kv-enter .kedev-logo {
+    animation: kvImgEnter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .kv-exit .kedev-logo {
+    animation: kvImgExit 0.45s ease forwards;
+  }
+  @keyframes kvImgEnter {
+    0%   { transform: scale(0.2) rotate(-8deg); opacity: 0; filter: blur(30px) drop-shadow(0 0 0px rgba(230,57,70,0)); }
+    60%  { transform: scale(1.1) rotate(2deg);  opacity: 1; filter: blur(0) drop-shadow(0 0 100px rgba(230,57,70,1)); }
+    100% { transform: scale(1)   rotate(0deg);  opacity: 1; filter: drop-shadow(0 0 40px rgba(230,57,70,0.9)) drop-shadow(0 0 80px rgba(183,28,28,0.5)); }
+  }
+  @keyframes kvImgExit {
+    0%   { transform: scale(1);   opacity: 1; filter: drop-shadow(0 0 40px rgba(230,57,70,0.9)); }
+    100% { transform: scale(2.5); opacity: 0; filter: blur(25px) drop-shadow(0 0 0px rgba(230,57,70,0)); }
+  }
+
+  .kedev-glitch-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    animation: kvGlitch 2.5s steps(1) infinite;
+  }
+  @keyframes kvGlitch {
+    0%,100%{ opacity:0; clip-path:inset(0 0 100% 0); }
+    8%     { opacity:1; clip-path:inset(12% 0 72% 0); transform:translate(8px,0);  background:rgba(230,57,70,0.12); }
+    9%     { opacity:0; }
+    18%    { opacity:1; clip-path:inset(55% 0 18% 0); transform:translate(-10px,0); background:rgba(255,255,255,0.06); }
+    19%    { opacity:0; }
+    30%    { opacity:1; clip-path:inset(38% 0 42% 0); transform:translate(6px,0);  background:rgba(230,57,70,0.08); }
+    31%    { opacity:0; }
+  }
+
+  .kedev-label {
+    position: relative;
+    z-index: 2;
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.6rem, 2vw, 0.78rem);
+    color: rgba(230,57,70,0.9);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: none;
+  }
+  .kv-enter .kedev-label {
+    animation: kvLabel 0.8s ease 0.4s both;
+  }
+  @keyframes kvLabel {
+    0%   { opacity: 0; letter-spacing: 1.2em; }
+    100% { opacity: 1; letter-spacing: 0.5em; }
+  }
+  .kedev-tap-hint {
+    position: absolute;
+    bottom: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.2em;
+    z-index: 4;
+  }
 </style>
 </head>
 <body>
+<!-- KEDEV OVERLAY -->
+<div id="kedev-overlay" class="kedev-overlay" aria-hidden="true">
+  <div class="kedev-rings">
+    <div class="kedev-ring"></div>
+    <div class="kedev-ring"></div>
+    <div class="kedev-ring"></div>
+    <div class="kedev-ring"></div>
+  </div>
+  <div class="kedev-scanlines"></div>
+  <div class="kedev-glow-bg"></div>
+  <div class="kedev-img-wrap">
+    <img src="kedev.png" alt="KEDEV" class="kedev-logo" draggable="false" />
+  </div>
+  <div class="kedev-label">Ingeniería · IA · Innovación</div>
+  <div class="kedev-glitch-layer"></div>
+  <span class="kedev-tap-hint">[ presiona para continuar ]</span>
+</div>
+
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- NAV -->
@@ -1805,6 +1964,48 @@
       heroScrollEl.classList.toggle('hidden', window.scrollY > 80);
     }, { passive: true });
   }
+
+  // ══ KEDEV OVERLAY ══
+  (function () {
+    const overlay  = document.getElementById('kedev-overlay');
+    const imgWrap  = overlay.querySelector('.kedev-img-wrap');
+    const label    = overlay.querySelector('.kedev-label');
+    let running = false;
+
+    function dismiss() {
+      if (!running) return;
+      imgWrap.classList.remove('kv-enter');
+      imgWrap.classList.add('kv-exit');
+      label.classList.remove('kv-enter');
+      setTimeout(() => {
+        overlay.classList.remove('kv-visible');
+        imgWrap.classList.remove('kv-exit');
+        running = false;
+      }, 480);
+    }
+
+    function showOverlay() {
+      if (running) return;
+      running = true;
+      imgWrap.classList.remove('kv-exit');
+      overlay.classList.add('kv-visible');
+      // Trigger enter animations next frame
+      requestAnimationFrame(() => {
+        imgWrap.classList.add('kv-enter');
+        label.classList.add('kv-enter');
+      });
+      // Auto-dismiss after 3.8 s
+      setTimeout(dismiss, 3800);
+    }
+
+    // Click/tap to dismiss early
+    overlay.addEventListener('click', dismiss);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') dismiss(); });
+
+    // Show 4 s after load, then every 55 s
+    setTimeout(showOverlay, 4000);
+    setInterval(showOverlay, 55000);
+  })();
 </script>
 </body>
 </html>
