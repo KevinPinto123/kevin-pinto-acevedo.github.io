@@ -608,6 +608,54 @@
     transition: opacity 0.2s;
   }
   .project-card:hover::before { opacity: 1; }
+
+  /* LIVE PROJECT CARDS */
+  .project-card.live {
+    border-top: 2px solid var(--accent3);
+  }
+  .project-card.live::before {
+    opacity: 1;
+    background: linear-gradient(90deg, var(--accent3), var(--accent));
+  }
+  .project-card.live:hover {
+    box-shadow: 0 0 30px rgba(0,255,136,0.06);
+  }
+  .project-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.6rem;
+    color: var(--accent3);
+    letter-spacing: 0.12em;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+  .project-live-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent3);
+    box-shadow: 0 0 6px var(--accent3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .project-link-live {
+    color: var(--accent3);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid rgba(0,255,136,0.4);
+    padding: 0.38rem 0.75rem;
+    transition: background 0.2s, border-color 0.2s, gap 0.2s;
+  }
+  .project-link-live:hover {
+    background: rgba(0,255,136,0.06);
+    border-color: var(--accent3);
+    gap: 0.65rem;
+  }
+
   .project-tag {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem;
@@ -1238,9 +1286,57 @@
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">PROYECTOS</div>
-      <h2 class="section-title">Soluciones <em>construidas</em></h2>
+      <h2 class="section-title">Proyectos <em>desplegados</em> &amp; en desarrollo</h2>
     </div>
     <div class="projects-grid">
+
+      <!-- ══ PROYECTOS EN PRODUCCIÓN ══ -->
+
+      <div class="project-card live">
+        <div class="project-tag">MARKETPLACE · BOOKING <span class="project-live"><span class="project-live-dot"></span>LIVE</span></div>
+        <div class="project-name">MiPoint</div>
+        <div class="project-desc">Plataforma multi-rol tipo Airbnb para espacios y servicios con sistema de booking, pagos (Culqi), mapas interactivos y notificaciones por email. Arquitectura completa de producción desplegada.</div>
+        <div class="project-stack">
+          <span class="project-tech">Next.js</span>
+          <span class="project-tech">Mapbox</span>
+          <span class="project-tech">Firebase</span>
+          <span class="project-tech">OpenAI</span>
+          <span class="project-tech">Anthropic</span>
+          <span class="project-tech">Culqi</span>
+        </div>
+        <a href="https://www.mipoint.com.pe/" class="project-link-live" target="_blank" rel="noopener noreferrer">Ver sitio en vivo →</a>
+      </div>
+
+      <div class="project-card live">
+        <div class="project-tag">CONSTRUCCIÓN · IA <span class="project-live"><span class="project-live-dot"></span>LIVE</span></div>
+        <div class="project-name">Axiora AI</div>
+        <div class="project-desc">Plataforma de IA para la industria de la construcción. Agentes BIM para interpretar modelos y agentes documentales para búsqueda inteligente de contratos y reportes técnicos. AWS Bedrock en producción.</div>
+        <div class="project-stack">
+          <span class="project-tech">AWS Bedrock</span>
+          <span class="project-tech">Lambda</span>
+          <span class="project-tech">IFC/BIM</span>
+          <span class="project-tech">Python</span>
+          <span class="project-tech">Docker</span>
+          <span class="project-tech">Claude</span>
+        </div>
+        <a href="https://axiora.la/" class="project-link-live" target="_blank" rel="noopener noreferrer">Ver sitio en vivo →</a>
+      </div>
+
+      <div class="project-card live">
+        <div class="project-tag">INDUSTRIA · MARKETPLACE <span class="project-live"><span class="project-live-dot"></span>LIVE</span></div>
+        <div class="project-name">Rope — Perú Textil Hub</div>
+        <div class="project-desc">Hub digital para la industria textil peruana. Conecta fabricantes, exportadores y compradores con catálogos de productos, directorio de empresas y herramientas de negocio para el sector.</div>
+        <div class="project-stack">
+          <span class="project-tech">Next.js</span>
+          <span class="project-tech">TypeScript</span>
+          <span class="project-tech">React</span>
+          <span class="project-tech">Tailwind</span>
+          <span class="project-tech">Vercel</span>
+        </div>
+        <a href="https://peru-textil-hub.vercel.app/" class="project-link-live" target="_blank" rel="noopener noreferrer">Ver sitio en vivo →</a>
+      </div>
+
+      <!-- ══ EN DESARROLLO ══ -->
 
       <div class="project-card">
         <div class="project-tag">GOVTECH · EDTECH</div>
@@ -1302,21 +1398,6 @@
       </div>
 
       <div class="project-card">
-        <div class="project-tag">MARKETPLACE · BOOKING</div>
-        <div class="project-name">MiPoint</div>
-        <div class="project-desc">Plataforma multi-rol tipo Airbnb para espacios y servicios con sistema de booking, pagos (Culqi), mapas interactivos y notificaciones por email. Arquitectura completa de producción.</div>
-        <div class="project-stack">
-          <span class="project-tech">Next.js</span>
-          <span class="project-tech">Mapbox</span>
-          <span class="project-tech">Firebase</span>
-          <span class="project-tech">OpenAI</span>
-          <span class="project-tech">Anthropic</span>
-          <span class="project-tech">Culqi</span>
-        </div>
-        <span class="project-link">En desarrollo →</span>
-      </div>
-
-      <div class="project-card">
         <div class="project-tag">DEMOCRACIA · IA</div>
         <div class="project-name">VOTI</div>
         <div class="project-desc">Plataforma de voto informado con IA conversacional para combatir la desinformación electoral. Permite comparar propuestas políticas con información verificada.</div>
@@ -1348,7 +1429,7 @@
       <div class="project-card">
         <div class="project-tag">VISIÓN COMPUTACIONAL · TRANSPORTE</div>
         <div class="project-name">HackatónATU</div>
-        <div class="project-desc">Optimización de flota del Metropolitano de Lima con visión computacional en tiempo real. Detección de personas y buses por video. Conecta directamente telecomunicaciones con IA aplicada.</div>
+        <div class="project-desc">Optimización de flota del Metropolitano de Lima con visión computacional en tiempo real. Detección de personas y buses por video. Conecta telecomunicaciones con IA aplicada.</div>
         <div class="project-stack">
           <span class="project-tech">YOLOv8</span>
           <span class="project-tech">OpenCV</span>
@@ -1360,17 +1441,15 @@
       </div>
 
       <div class="project-card">
-        <div class="project-tag">CONSTRUCCIÓN · IA</div>
-        <div class="project-name">Agentes Axiora</div>
-        <div class="project-desc">Agente BIM para interpretar modelos de construcción y agente documental para búsqueda inteligente de contratos, reportes y documentos técnicos. En producción con AWS Bedrock.</div>
+        <div class="project-tag">DEMOCRACIA · TECNOLOGÍA</div>
+        <div class="project-name">ChambApp — Hackathon BCP</div>
+        <div class="project-desc">Plataforma de conexión talento-empresas. Finalista en el Hackathon BCP. Stack de producción en edge computing con TanStack Start y Cloudflare Workers.</div>
         <div class="project-stack">
-          <span class="project-tech">AWS Bedrock</span>
-          <span class="project-tech">Lambda</span>
-          <span class="project-tech">IFC/BIM</span>
-          <span class="project-tech">Python</span>
-          <span class="project-tech">Docker</span>
+          <span class="project-tech">TanStack Start</span>
+          <span class="project-tech">Cloudflare Workers</span>
+          <span class="project-tech">TypeScript</span>
         </div>
-        <span class="project-link">En producción →</span>
+        <span class="project-link">Finalista BCP →</span>
       </div>
 
     </div>
