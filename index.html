@@ -148,6 +148,7 @@
     display: flex;
     align-items: center;
     padding-top: var(--nav-height);
+    position: relative;
   }
   .hero-inner {
     display: grid;
@@ -332,6 +333,114 @@
   @keyframes pulse {
     0%, 100% { opacity: 0.5; transform: scale(0.8); }
     50% { opacity: 1; transform: scale(1); }
+  }
+
+  /* TYPING ANIMATION */
+  .hero-roles {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 1.4em;
+  }
+  .role-prefix { color: var(--accent2); }
+  .role-typed { color: var(--text); }
+  .role-cursor {
+    color: var(--accent);
+    animation: blink 0.75s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* HERO SOCIAL LINKS */
+  .hero-socials {
+    display: flex;
+    gap: 0.55rem;
+    margin-top: 1.75rem;
+    flex-wrap: wrap;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.04em;
+    background: transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .social-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.04);
+  }
+  .social-link svg { flex-shrink: 0; }
+
+  /* SECOND PHOTO BADGE (top-left) */
+  .photo-badge-top {
+    position: absolute;
+    left: -22px;
+    top: 28px;
+    z-index: 2;
+    width: 140px;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--border);
+    background: rgba(13,20,33,0.94);
+    backdrop-filter: blur(12px);
+    font-family: 'Space Mono', monospace;
+  }
+  .photo-badge-top strong {
+    display: block;
+    color: var(--accent2);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  .photo-badge-top span { color: var(--muted); font-size: 0.6rem; line-height: 1.4; display: block; }
+
+  /* PHOTO FRAME GLOW */
+  @keyframes frameGlow {
+    0%, 100% { box-shadow: 30px 30px 70px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,255,0.08); }
+    50% { box-shadow: 30px 30px 70px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,255,0.18), 0 0 60px rgba(123,97,255,0.08); }
+  }
+
+  /* SCROLL INDICATOR */
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .hero-scroll.hidden { opacity: 0; }
+  .scroll-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: scrollBounce 1.6s ease-in-out infinite;
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(10px); opacity: 1; }
   }
 
   /* SECTION HEADERS */
@@ -802,7 +911,9 @@
     }
     .hero-photo { order: -1; justify-self: start; }
     .hero-photo-frame { width: 190px; height: 220px; }
-    .photo-badge { right: -115px; bottom: 18px; width: 145px; }
+    .photo-badge { right: 8px; bottom: -16px; width: 140px; }
+    .photo-badge-top { display: none; }
+    .hero-scroll { display: none; }
     .hero-tag {
       font-size: 0.62rem;
       line-height: 1.8;
@@ -869,9 +980,13 @@
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-tag">UNI · FIEE · 9.º Ciclo · Quinto Superior</div>
+      <div class="hero-tag">UNI · FIEE · Décimo Superior</div>
       <h1 class="hero-name">Kevin <em>Pinto</em><br>Acevedo</h1>
       <div class="hero-brand">@ KEDEV</div>
+      <div class="hero-roles">
+        <span class="role-prefix">//</span>
+        <span class="role-typed" id="hero-typed"></span><span class="role-cursor">|</span>
+      </div>
       <p class="hero-desc">
         Ingeniero de Telecomunicaciones en formación. Construyo soluciones con IA, automatización y desarrollo full-stack que generan impacto real en educación, gobierno digital y transformación empresarial en Latinoamérica.
       </p>
@@ -885,17 +1000,35 @@
           <div class="stat-label">Roles de liderazgo</div>
         </div>
         <div class="stat">
-          <div class="stat-num">14/20</div>
-          <div class="stat-label">Promedio · Quinto Superior</div>
+          <div class="stat-num">Top 20%</div>
+          <div class="stat-label">Rendimiento UNI</div>
         </div>
       </div>
       <div class="hero-btns">
         <a href="#proyectos" class="btn-primary">Ver proyectos</a>
         <a href="CV_KEVIN_EDUARDO_PINTO_ACEVEDO.pdf" class="btn-outline" target="_blank" rel="noopener noreferrer">Descargar CV</a>
       </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/kevin-eduardo-pinto-acevedo-19301a306" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/KevinPinto123" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:kevin.pinto.a@uni.pe" class="social-link" aria-label="Email">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Email
+        </a>
+      </div>
     </div>
-    <div class="hero-photo">
-      <div class="hero-photo-frame">
+    <div class="hero-photo" id="hero-photo">
+      <div class="photo-badge-top">
+        <strong>IEEE · UNI</strong>
+        <span>Dir. de Tecnología</span>
+      </div>
+      <div class="hero-photo-frame" id="hero-photo-frame" style="animation: frameGlow 3s ease-in-out infinite;">
         <img src="yo.png" alt="Retrato profesional de Kevin Pinto Acevedo" width="360" height="360" fetchpriority="high" />
       </div>
       <div class="photo-badge">
@@ -904,6 +1037,10 @@
       </div>
       <div class="hero-corner"></div>
     </div>
+  </div>
+  <div class="hero-scroll" id="hero-scroll">
+    <div class="scroll-dot"></div>
+    <span>scroll</span>
   </div>
 </section>
 
@@ -1046,9 +1183,9 @@
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="tl-date">ACTUAL</div>
-        <div class="tl-role">Desarrollador IA — Startup ganadora StartUp Perú 12G</div>
-        <div class="tl-org">Axiora AI · Lima, Perú</div>
+        <div class="tl-date">2026 — PRESENTE</div>
+        <div class="tl-role">Desarrollador IA</div>
+        <div class="tl-org">Axiora AI · Lima, Perú · Startup Perú 12G</div>
         <div class="tl-desc">Desarrollo de agentes BIM y documentales con IA. Arquitectura serverless en AWS (Lambda, ECR, S3, API Gateway). Automatización documental para el sector construcción con AWS Bedrock (Claude).</div>
       </div>
 
@@ -1091,7 +1228,7 @@
         <div class="tl-date">2023 — PRESENTE</div>
         <div class="tl-role">B.Sc. Ingeniería de Telecomunicaciones · 9.º Ciclo</div>
         <div class="tl-org">Universidad Nacional de Ingeniería (UNI) · FIEE</div>
-        <div class="tl-desc">Promedio 14/20 · Quinto Superior. Especialización en procesamiento de señales, antenas, sistemas microondas y comunicaciones inalámbricas.</div>
+        <div class="tl-desc">Décimo Superior. Especialización en procesamiento de señales, antenas, sistemas microondas y comunicaciones inalámbricas.</div>
       </div>
 
     </div>
@@ -1134,7 +1271,7 @@
           <span class="project-tech">Supabase</span>
           <span class="project-tech">GPT</span>
         </div>
-        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto →</a>
+        <span class="project-link">En desarrollo →</span>
       </div>
 
       <div class="project-card">
@@ -1178,7 +1315,7 @@
           <span class="project-tech">Anthropic</span>
           <span class="project-tech">Culqi</span>
         </div>
-        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto →</a>
+        <span class="project-link">En desarrollo →</span>
       </div>
 
       <div class="project-card">
@@ -1207,7 +1344,7 @@
           <span class="project-tech">Pandas</span>
           <span class="project-tech">FastAPI</span>
         </div>
-        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto →</a>
+        <span class="project-link">En desarrollo →</span>
       </div>
 
       <div class="project-card">
@@ -1235,7 +1372,7 @@
           <span class="project-tech">Python</span>
           <span class="project-tech">Docker</span>
         </div>
-        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
+        <span class="project-link">En producción →</span>
       </div>
 
     </div>
@@ -1299,9 +1436,9 @@
       <div class="award-item">
         <div class="award-year">2023</div>
         <div>
-          <div class="award-name">Quinto Superior · Promedio 14/20</div>
+          <div class="award-name">Décimo Superior</div>
           <div class="award-org">FIEE — Universidad Nacional de Ingeniería</div>
-          <div class="award-desc">Distinción académica mantenida desde el inicio de la carrera. Ranking en el top 20% de la facultad.</div>
+          <div class="award-desc">Distinción académica mantenida desde el inicio de la carrera. Ranking en el top 20% de la facultad de Ingeniería Eléctrica y Electrónica.</div>
         </div>
       </div>
 
@@ -1427,9 +1564,9 @@
             <span class="contact-link-icon">EMAIL</span>
             <span class="contact-link-val">kevin.pinto.a@uni.pe</span>
           </a>
-          <a href="https://www.linkedin.com/in/kevin-pinto-acevedo" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <a href="https://www.linkedin.com/in/kevin-eduardo-pinto-acevedo-19301a306" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="contact-link-icon">LINKEDIN</span>
-            <span class="contact-link-val">/in/kevin-pinto-acevedo</span>
+            <span class="contact-link-val">/in/kevin-eduardo-pinto-acevedo</span>
           </a>
           <a href="https://github.com/KevinPinto123" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="contact-link-icon">GITHUB</span>
@@ -1524,6 +1661,47 @@
   }, { passive: true });
 
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Tilt effect on photo
+  const heroPhotoEl = document.getElementById('hero-photo');
+  const photoFrameEl = document.getElementById('hero-photo-frame');
+  if (heroPhotoEl && photoFrameEl) {
+    heroPhotoEl.addEventListener('mousemove', (e) => {
+      const rect = heroPhotoEl.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      photoFrameEl.style.transition = 'transform 0.1s ease';
+      photoFrameEl.style.transform = `perspective(700px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale3d(1.02,1.02,1.02)`;
+    });
+    heroPhotoEl.addEventListener('mouseleave', () => {
+      photoFrameEl.style.transition = 'transform 0.55s ease';
+      photoFrameEl.style.transform = 'perspective(700px) rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
+    });
+  }
+
+  // Typewriter effect
+  const typedEl = document.getElementById('hero-typed');
+  if (typedEl) {
+    const roles = ['IA Developer', 'Full Stack Engineer', 'Telecom Engineer', 'ML Engineer', 'Tech Lead'];
+    let rIdx = 0, cIdx = 0, deleting = false;
+    function typeRole() {
+      const cur = roles[rIdx];
+      typedEl.textContent = deleting ? cur.substring(0, cIdx - 1) : cur.substring(0, cIdx + 1);
+      deleting ? cIdx-- : cIdx++;
+      if (!deleting && cIdx === cur.length) { deleting = true; setTimeout(typeRole, 1800); return; }
+      if (deleting && cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; setTimeout(typeRole, 350); return; }
+      setTimeout(typeRole, deleting ? 45 : 75);
+    }
+    setTimeout(typeRole, 600);
+  }
+
+  // Hide scroll indicator on scroll
+  const heroScrollEl = document.getElementById('hero-scroll');
+  if (heroScrollEl) {
+    window.addEventListener('scroll', () => {
+      heroScrollEl.classList.toggle('hidden', window.scrollY > 80);
+    }, { passive: true });
+  }
 </script>
 </body>
 </html>
