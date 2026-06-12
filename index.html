@@ -295,25 +295,10 @@
     background: linear-gradient(to top, rgba(8,12,20,0.4), transparent 45%);
     pointer-events: none;
   }
-  .photo-badge {
-    position: absolute;
-    right: -22px;
-    bottom: 24px;
-    z-index: 2;
-    width: 150px;
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--border);
-    background: rgba(13,20,33,0.94);
-    backdrop-filter: blur(12px);
-    font-family: 'Space Mono', monospace;
+  .hero-photo-wrapper {
+    position: relative;
+    display: inline-block;
   }
-  .photo-badge strong {
-    display: block;
-    color: var(--accent3);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-  }
-  .photo-badge span { color: var(--muted); font-size: 0.64rem; }
   .hero-corner {
     position: absolute;
     bottom: -12px; right: -12px;
@@ -386,27 +371,32 @@
   }
   .social-link svg { flex-shrink: 0; }
 
-  /* SECOND PHOTO BADGE (top-left) */
-  .photo-badge-top {
-    position: absolute;
-    left: -22px;
-    top: 28px;
-    z-index: 2;
-    width: 140px;
-    padding: 0.75rem 0.9rem;
+  /* TECH PILLS BELOW PHOTO */
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+    max-width: 300px;
+  }
+  .tech-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.22rem 0.55rem;
     border: 1px solid var(--border);
-    background: rgba(13,20,33,0.94);
-    backdrop-filter: blur(12px);
+    background: rgba(13,20,33,0.8);
     font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    transition: color 0.2s, border-color 0.2s;
   }
-  .photo-badge-top strong {
-    display: block;
-    color: var(--accent2);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.2rem;
+  .tech-pill:hover { color: var(--text); border-color: var(--accent); }
+  .tech-pill-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
-  .photo-badge-top span { color: var(--muted); font-size: 0.6rem; line-height: 1.4; display: block; }
 
   /* PHOTO FRAME GLOW */
   @keyframes frameGlow {
@@ -911,9 +901,9 @@
     }
     .hero-photo { order: -1; justify-self: start; }
     .hero-photo-frame { width: 190px; height: 220px; }
-    .photo-badge { right: 8px; bottom: -16px; width: 140px; }
-    .photo-badge-top { display: none; }
+    .photo-badge { display: none; }
     .hero-scroll { display: none; }
+    .tech-pills { max-width: 190px; }
     .hero-tag {
       font-size: 0.62rem;
       line-height: 1.8;
@@ -1021,21 +1011,29 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
           Email
         </a>
+        <a href="tel:+51925120944" class="social-link" aria-label="Teléfono">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +51 925 120 944
+        </a>
       </div>
     </div>
     <div class="hero-photo" id="hero-photo">
-      <div class="photo-badge-top">
-        <strong>IEEE · UNI</strong>
-        <span>Dir. de Tecnología</span>
+      <div class="hero-photo-wrapper">
+        <div class="hero-photo-frame" id="hero-photo-frame" style="animation: frameGlow 3s ease-in-out infinite;">
+          <img src="yo.png" alt="Retrato profesional de Kevin Pinto Acevedo" width="360" height="360" fetchpriority="high" />
+        </div>
+        <div class="hero-corner"></div>
       </div>
-      <div class="hero-photo-frame" id="hero-photo-frame" style="animation: frameGlow 3s ease-in-out infinite;">
-        <img src="yo.png" alt="Retrato profesional de Kevin Pinto Acevedo" width="360" height="360" fetchpriority="high" />
+      <div class="tech-pills">
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#3776AB"></span>Python</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#61DAFB"></span>React</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#3178C6"></span>TypeScript</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#009688"></span>FastAPI</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#FF9900"></span>AWS</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#00D4FF"></span>LangGraph</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#2496ED"></span>Docker</span>
+        <span class="tech-pill"><span class="tech-pill-dot" style="background:#336791"></span>PostgreSQL</span>
       </div>
-      <div class="photo-badge">
-        <strong>DISPONIBLE</strong>
-        <span>Proyectos y oportunidades</span>
-      </div>
-      <div class="hero-corner"></div>
     </div>
   </div>
   <div class="hero-scroll" id="hero-scroll">
@@ -1560,6 +1558,10 @@
         <h2 class="contact-tagline">¿Construimos algo <em>juntos</em>?</h2>
         <p class="contact-sub">Siempre abierto a proyectos de impacto, colaboraciones, mentorías y oportunidades en IA, telecomunicaciones y desarrollo. Escríbeme.</p>
         <div class="contact-links">
+          <a href="tel:+51925120944" class="contact-link">
+            <span class="contact-link-icon">TELÉFONO</span>
+            <span class="contact-link-val">+51 925 120 944</span>
+          </a>
           <a href="mailto:kevin.pinto.a@uni.pe" class="contact-link">
             <span class="contact-link-icon">EMAIL</span>
             <span class="contact-link-val">kevin.pinto.a@uni.pe</span>
@@ -1663,17 +1665,17 @@
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   // Tilt effect on photo
-  const heroPhotoEl = document.getElementById('hero-photo');
   const photoFrameEl = document.getElementById('hero-photo-frame');
-  if (heroPhotoEl && photoFrameEl) {
-    heroPhotoEl.addEventListener('mousemove', (e) => {
-      const rect = heroPhotoEl.getBoundingClientRect();
+  const photoWrapper = photoFrameEl && photoFrameEl.closest('.hero-photo-wrapper');
+  if (photoWrapper && photoFrameEl) {
+    photoWrapper.addEventListener('mousemove', (e) => {
+      const rect = photoWrapper.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
       photoFrameEl.style.transition = 'transform 0.1s ease';
       photoFrameEl.style.transform = `perspective(700px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale3d(1.02,1.02,1.02)`;
     });
-    heroPhotoEl.addEventListener('mouseleave', () => {
+    photoWrapper.addEventListener('mouseleave', () => {
       photoFrameEl.style.transition = 'transform 0.55s ease';
       photoFrameEl.style.transform = 'perspective(700px) rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
     });
