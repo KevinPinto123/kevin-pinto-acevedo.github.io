@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Portafolio de Kevin Pinto Acevedo, desarrollador de soluciones con inteligencia artificial, automatización, telecomunicaciones y software full-stack." />
+<meta name="author" content="Kevin Eduardo Pinto Acevedo" />
+<meta name="theme-color" content="#080C14" />
+<meta name="color-scheme" content="dark" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_PE" />
+<meta property="og:title" content="Kevin Pinto Acevedo | IA, Software y Telecomunicaciones" />
+<meta property="og:description" content="Construyo productos digitales con IA y software que convierten problemas complejos en soluciones útiles." />
+<meta property="og:url" content="https://kevinpinto123.github.io/kevin-pinto-acevedo.github.io/" />
+<meta property="og:image" content="https://kevinpinto123.github.io/kevin-pinto-acevedo.github.io/yo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://kevinpinto123.github.io/kevin-pinto-acevedo.github.io/" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<title>Kevin Pinto Acevedo | IA, Software y Telecomunicaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #080C14;
+    --surface: #0D1421;
+    --surface2: #111B2E;
+    --border: #1E2E47;
+    --accent: #00D4FF;
+    --accent2: #7B61FF;
+    --accent3: #00FF88;
+    --text: #E8EDF5;
+    --muted: #6B7FA3;
+    --card: #0F1C30;
+    --nav-height: 68px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(circle at 78% 12%, rgba(123,97,255,0.12), transparent 28rem),
+      radial-gradient(circle at 12% 28%, rgba(0,212,255,0.08), transparent 24rem),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  ::selection { color: var(--bg); background: var(--accent); }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1000;
+    padding: 0.65rem 1rem;
+    color: var(--bg);
+    background: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+  }
+  .skip-link:focus { transform: translateY(0); }
+
+  /* GRID NOISE BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(8,12,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-height);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); }
+  .nav-cta {
+    padding: 0.45rem 0.8rem;
+    border: 1px solid var(--border);
+  }
+  .nav-cta:hover { border-color: var(--accent); }
+  .menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 1px;
+    margin: 5px auto;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    overflow-wrap: anywhere;
+  }
+  .hero-content { min-width: 0; }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 0.55rem;
+    border-radius: 50%;
+    background: var(--accent3);
+    box-shadow: 0 0 14px var(--accent3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .hero-name {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-brand {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 540px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat { text-align: left; }
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.6rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.7rem 1.6rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,212,255,0.22);
+  }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.7rem 1.6rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .hero-photo {
+    position: relative;
+    justify-self: end;
+  }
+  .hero-photo-frame {
+    width: 300px;
+    height: 350px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    background: var(--surface2);
+    box-shadow: 30px 30px 70px rgba(0,0,0,0.4);
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .hero-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: saturate(0.9) contrast(1.03);
+  }
+  .hero-photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8,12,20,0.4), transparent 45%);
+    pointer-events: none;
+  }
+  .photo-badge {
+    position: absolute;
+    right: -22px;
+    bottom: 24px;
+    z-index: 2;
+    width: 150px;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    background: rgba(13,20,33,0.94);
+    backdrop-filter: blur(12px);
+    font-family: 'Space Mono', monospace;
+  }
+  .photo-badge strong {
+    display: block;
+    color: var(--accent3);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+  .photo-badge span { color: var(--muted); font-size: 0.64rem; }
+  .hero-corner {
+    position: absolute;
+    bottom: -12px; right: -12px;
+    width: 60px; height: 60px;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    margin-bottom: 3rem;
+    padding-top: 6rem;
+  }
+  .section-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* STACK */
+  #stack { padding-bottom: 4rem; }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+  }
+  .stack-item {
+    background: var(--card);
+    padding: 1rem 1.25rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .stack-item:hover { background: var(--surface2); }
+  .stack-cat {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--accent2);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  .stack-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tech-tag {
+    font-size: 0.75rem;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tech-tag:hover { color: var(--accent); border-color: var(--accent); }
+  .stack-full {
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    background: var(--card);
+  }
+  .stack-full-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent3);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  .stack-full-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .stack-full-tag {
+    font-size: 0.78rem;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* TRAYECTORIA */
+  #trayectoria { padding-bottom: 4rem; }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 0.35rem;
+    width: 8px; height: 8px;
+    border: 1px solid var(--accent);
+    background: var(--bg);
+    transform: rotate(45deg);
+  }
+  .tl-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+  }
+  .tl-role {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .tl-org {
+    font-size: 0.85rem;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+    font-family: 'Space Mono', monospace;
+  }
+  .tl-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* PROYECTOS */
+  #proyectos { padding-bottom: 4rem; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--card);
+    padding: 1.75rem;
+    position: relative;
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    z-index: 2;
+    background: var(--surface2);
+    transform: translateY(-4px);
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover::before { opacity: 1; }
+  .project-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent3);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+  }
+  .project-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .project-tech {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    background: var(--bg);
+  }
+  .project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.7rem; }
+
+  /* PREMIOS */
+  #premios { padding-bottom: 4rem; }
+  .awards-list { display: flex; flex-direction: column; gap: 1px; }
+  .award-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .award-item:hover { background: var(--surface2); }
+  .award-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.4rem;
+    color: var(--accent);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .award-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .award-org {
+    font-size: 0.82rem;
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 0.4rem;
+  }
+  .award-desc { color: var(--muted); font-size: 0.85rem; }
+
+  /* EDUCACIÓN */
+  #educacion { padding-bottom: 6rem; }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .edu-block {
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    background: var(--card);
+  }
+  .edu-block-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item { margin-bottom: 1.25rem; }
+  .edu-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .edu-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .edu-place { font-size: 0.82rem; color: var(--accent2); }
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .lang-name { font-size: 0.9rem; font-weight: 500; }
+  .lang-level {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 2px 8px;
+  }
+  .cert-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent3);
+    min-width: 36px;
+    padding-top: 2px;
+  }
+  .cert-name { font-size: 0.85rem; color: var(--text); }
+  .cert-issuer { font-size: 0.75rem; color: var(--muted); }
+
+  /* CONTACTO */
+  #contacto {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-tagline {
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .contact-tagline em { font-style: normal; color: var(--accent); }
+  .contact-sub { color: var(--muted); margin-bottom: 2rem; line-height: 1.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--surface2); }
+  .contact-link-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    min-width: 60px;
+  }
+  .contact-link-val { font-size: 0.9rem; }
+  .contact-propuesta {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    background: var(--card);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-propuesta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  }
+  .propuesta-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  .propuesta-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .propuesta-areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .propuesta-area {
+    font-size: 0.75rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .back-to-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 50;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    background: rgba(13,20,33,0.92);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .back-to-top:hover { border-color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .menu-toggle { display: block; }
+    .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+    .nav-links {
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0.75rem 1.25rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,20,0.98);
+      transform: translateY(-130%);
+      visibility: hidden;
+      transition: transform 0.25s ease, visibility 0.25s;
+    }
+    .nav-links.open { transform: translateY(0); visibility: visible; }
+    .nav-links a { display: block; padding: 0.75rem 0; }
+    .nav-cta { display: inline-block !important; padding: 0.65rem 0.8rem !important; }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    .hero-photo { order: -1; justify-self: start; }
+    .hero-photo-frame { width: 190px; height: 220px; }
+    .photo-badge { right: -115px; bottom: 18px; width: 145px; }
+    .hero-tag {
+      font-size: 0.62rem;
+      line-height: 1.8;
+      letter-spacing: 0.09em;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .stat { min-width: 0; }
+    .stat-num { font-size: 1.25rem; }
+    .stat-label {
+      font-size: 0.62rem;
+      overflow-wrap: anywhere;
+    }
+    .projects-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .award-item { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 420px) {
+    .container, .hero-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .hero-name { font-size: 2.65rem; }
+    .hero-btns a { width: 100%; text-align: center; }
+    .projects-grid { grid-template-columns: minmax(0, 1fr); }
+    .contact-link { align-items: flex-start; flex-direction: column; gap: 0.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- NAV -->
+<nav aria-label="Navegación principal">
+  <a href="#hero" class="nav-logo">KEDEV</a>
+  <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#trayectoria">Trayectoria</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#premios">Logros</a></li>
+    <li><a href="#educacion">Educación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="CV_KEVIN_EDUARDO_PINTO_ACEVEDO.pdf" class="nav-cta" target="_blank" rel="noopener noreferrer">Descargar CV</a></li>
+  </ul>
+</nav>
+
+<main id="contenido">
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">UNI · FIEE · 9.º Ciclo · Quinto Superior</div>
+      <h1 class="hero-name">Kevin <em>Pinto</em><br>Acevedo</h1>
+      <div class="hero-brand">@ KEDEV</div>
+      <p class="hero-desc">
+        Ingeniero de Telecomunicaciones en formación. Construyo soluciones con IA, automatización y desarrollo full-stack que generan impacto real en educación, gobierno digital y transformación empresarial en Latinoamérica.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Proyectos con IA</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Roles de liderazgo</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">14/20</div>
+          <div class="stat-label">Promedio · Quinto Superior</div>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+        <a href="CV_KEVIN_EDUARDO_PINTO_ACEVEDO.pdf" class="btn-outline" target="_blank" rel="noopener noreferrer">Descargar CV</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="yo.png" alt="Retrato profesional de Kevin Pinto Acevedo" width="360" height="360" fetchpriority="high" />
+      </div>
+      <div class="photo-badge">
+        <strong>DISPONIBLE</strong>
+        <span>Proyectos y oportunidades</span>
+      </div>
+      <div class="hero-corner"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">TECH STACK</div>
+      <h2 class="section-title">Herramientas &amp; <em>Tecnologías</em></h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <div class="stack-cat">FRONTEND</div>
+        <div class="stack-techs">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Next.js</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Angular</span>
+          <span class="tech-tag">Tailwind</span>
+          <span class="tech-tag">Vite</span>
+          <span class="tech-tag">Zustand</span>
+          <span class="tech-tag">Framer Motion</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">BACKEND</div>
+        <div class="stack-techs">
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">NestJS</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">Pydantic</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">IA &amp; LLMs</div>
+        <div class="stack-techs">
+          <span class="tech-tag">LangGraph</span>
+          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">OpenAI</span>
+          <span class="tech-tag">AWS Bedrock</span>
+          <span class="tech-tag">Gemini</span>
+          <span class="tech-tag">Whisper</span>
+          <span class="tech-tag">Anthropic SDK</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">DATOS &amp; ML</div>
+        <div class="stack-techs">
+          <span class="tech-tag">scikit-learn</span>
+          <span class="tech-tag">XGBoost</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">YOLOv8</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">BASE DE DATOS</div>
+        <div class="stack-techs">
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Supabase</span>
+          <span class="tech-tag">Redis</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">TypeORM</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">CLOUD &amp; DEVOPS</div>
+        <div class="stack-techs">
+          <span class="tech-tag">AWS Lambda</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">Vercel</span>
+          <span class="tech-tag">Railway</span>
+          <span class="tech-tag">Cloudflare</span>
+          <span class="tech-tag">Git</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">TELECOMUNICACIONES</div>
+        <div class="stack-techs">
+          <span class="tech-tag">Antenas Yagi</span>
+          <span class="tech-tag">Helicoidales</span>
+          <span class="tech-tag">Microondas</span>
+          <span class="tech-tag">Fibra Óptica</span>
+          <span class="tech-tag">GNS3</span>
+          <span class="tech-tag">ModelArts</span>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-cat">INTEGRACIONES</div>
+        <div class="stack-techs">
+          <span class="tech-tag">Mapbox</span>
+          <span class="tech-tag">Google Places</span>
+          <span class="tech-tag">IziPay</span>
+          <span class="tech-tag">Culqi</span>
+          <span class="tech-tag">Resend</span>
+          <span class="tech-tag">jsPDF</span>
+        </div>
+      </div>
+    </div>
+    <div class="stack-full">
+      <div class="stack-full-title">// TAMBIÉN MANEJO</div>
+      <div class="stack-full-tags">
+        <span class="stack-full-tag">SQL</span>
+        <span class="stack-full-tag">Cisco Networking</span>
+        <span class="stack-full-tag">AWS Cloud</span>
+        <span class="stack-full-tag">Radix UI</span>
+        <span class="stack-full-tag">shadcn/ui</span>
+        <span class="stack-full-tag">TanStack Query</span>
+        <span class="stack-full-tag">TanStack Router</span>
+        <span class="stack-full-tag">React Hook Form</span>
+        <span class="stack-full-tag">Zod</span>
+        <span class="stack-full-tag">Recharts</span>
+        <span class="stack-full-tag">Rive</span>
+        <span class="stack-full-tag">face-api.js</span>
+        <span class="stack-full-tag">BeautifulSoup</span>
+        <span class="stack-full-tag">gspread</span>
+        <span class="stack-full-tag">Bun</span>
+        <span class="stack-full-tag">LaTeX</span>
+        <span class="stack-full-tag">Matlab</span>
+        <span class="stack-full-tag">Seaborn</span>
+        <span class="stack-full-tag">Matplotlib</span>
+        <span class="stack-full-tag">NLP</span>
+        <span class="stack-full-tag">IFC / BIM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAYECTORIA -->
+<section id="trayectoria">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">TRAYECTORIA</div>
+      <h2 class="section-title">Liderazgo &amp; <em>Experiencia</em></h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="tl-date">ACTUAL</div>
+        <div class="tl-role">Desarrollador IA — Startup ganadora StartUp Perú 12G</div>
+        <div class="tl-org">Axiora AI · Lima, Perú</div>
+        <div class="tl-desc">Desarrollo de agentes BIM y documentales con IA. Arquitectura serverless en AWS (Lambda, ECR, S3, API Gateway). Automatización documental para el sector construcción con AWS Bedrock (Claude).</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">ACTUAL</div>
+        <div class="tl-role">Director de Tecnología</div>
+        <div class="tl-org">Developer Student Club UNI · IEEE</div>
+        <div class="tl-desc">Planificación tecnológica, mentorías y desarrollo de proyectos de innovación para la comunidad estudiantil de la UNI.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">ACTUAL</div>
+        <div class="tl-role">Director de Capacitaciones</div>
+        <div class="tl-org">IEEE Computational Intelligence Society UNI</div>
+        <div class="tl-desc">Organización de talleres especializados en IA y ciencia de datos. Coordinación de ponencias técnicas y programas de formación para estudiantes universitarios.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">2025</div>
+        <div class="tl-role">Campus Director</div>
+        <div class="tl-org">Impact Startup Competition UNI</div>
+        <div class="tl-desc">Fomento del emprendimiento universitario y conexión de estudiantes con ecosistemas de innovación a nivel nacional.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">2025</div>
+        <div class="tl-role">Prácticas — Telecomunicaciones e IA</div>
+        <div class="tl-org">Huawei Perú</div>
+        <div class="tl-desc">Actividades en telecomunicaciones, IA, cloud computing, ModelArts, procesamiento de imágenes y NLP dentro del ecosistema Huawei Cloud.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">2024 — 2025</div>
+        <div class="tl-role">Mentor</div>
+        <div class="tl-org">Junior Achievement Perú</div>
+        <div class="tl-desc">Mentoría a equipos escolares de Lima Norte que alcanzaron instancias finales en competencias de innovación y emprendimiento.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">2023 — PRESENTE</div>
+        <div class="tl-role">B.Sc. Ingeniería de Telecomunicaciones · 9.º Ciclo</div>
+        <div class="tl-org">Universidad Nacional de Ingeniería (UNI) · FIEE</div>
+        <div class="tl-desc">Promedio 14/20 · Quinto Superior. Especialización en procesamiento de señales, antenas, sistemas microondas y comunicaciones inalámbricas.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PROYECTOS</div>
+      <h2 class="section-title">Soluciones <em>construidas</em></h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-tag">GOVTECH · EDTECH</div>
+        <div class="project-name">TIPUY</div>
+        <div class="project-desc">Sistema integral de gestión documental universitaria con IA. Automatiza constancias, matrículas, solicitudes y seguimiento documental eliminando procesos lentos. Chatbot IA + RPA + firma digital.</div>
+        <div class="project-stack">
+          <span class="project-tech">Angular 19</span>
+          <span class="project-tech">NestJS</span>
+          <span class="project-tech">PostgreSQL</span>
+          <span class="project-tech">OpenAI</span>
+          <span class="project-tech">Docker</span>
+          <span class="project-tech">Redis</span>
+        </div>
+        <span class="project-link">En desarrollo →</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">TRAVELTECH · IA</div>
+        <div class="project-name">¿Dónde Somos? (Vora)</div>
+        <div class="project-desc">Agente de viajes conversacional "Gou" para turismo interno peruano. Genera itinerarios personalizados, recomienda hoteles, restaurantes y transporte con mapas interactivos y exportación PDF.</div>
+        <div class="project-stack">
+          <span class="project-tech">Next.js</span>
+          <span class="project-tech">FastAPI</span>
+          <span class="project-tech">LangGraph</span>
+          <span class="project-tech">Mapbox</span>
+          <span class="project-tech">Supabase</span>
+          <span class="project-tech">GPT</span>
+        </div>
+        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">IA · COACHING</div>
+        <div class="project-name">RimAI (Rimay)</div>
+        <div class="project-desc">Entrenador de pitch con IA en tiempo real. Analiza lenguaje corporal por video, transcribe voz con Whisper y brinda feedback con Gemini. "Rimay" = hablar en quechua. 3 modelos IA coordinados.</div>
+        <div class="project-stack">
+          <span class="project-tech">React</span>
+          <span class="project-tech">GPT-4o Vision</span>
+          <span class="project-tech">Whisper-1</span>
+          <span class="project-tech">Gemini 2.5 Flash</span>
+          <span class="project-tech">Supabase Edge</span>
+          <span class="project-tech">face-api.js</span>
+        </div>
+        <span class="project-link">En desarrollo →</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">PLATAFORMA · COMUNIDAD</div>
+        <div class="project-name">CHAKAI</div>
+        <div class="project-desc">Plataforma de hackathones y oportunidades para estudiantes y empresas. Incluye modo "Live Hackathon" en tiempo real con suscripciones en vivo vía Supabase Realtime.</div>
+        <div class="project-stack">
+          <span class="project-tech">React</span>
+          <span class="project-tech">Vite</span>
+          <span class="project-tech">Supabase Realtime</span>
+          <span class="project-tech">Framer Motion</span>
+          <span class="project-tech">Tailwind</span>
+        </div>
+        <span class="project-link">En desarrollo →</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">MARKETPLACE · BOOKING</div>
+        <div class="project-name">MiPoint</div>
+        <div class="project-desc">Plataforma multi-rol tipo Airbnb para espacios y servicios con sistema de booking, pagos (Culqi), mapas interactivos y notificaciones por email. Arquitectura completa de producción.</div>
+        <div class="project-stack">
+          <span class="project-tech">Next.js</span>
+          <span class="project-tech">Mapbox</span>
+          <span class="project-tech">Firebase</span>
+          <span class="project-tech">OpenAI</span>
+          <span class="project-tech">Anthropic</span>
+          <span class="project-tech">Culqi</span>
+        </div>
+        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">DEMOCRACIA · IA</div>
+        <div class="project-name">VOTI</div>
+        <div class="project-desc">Plataforma de voto informado con IA conversacional para combatir la desinformación electoral. Permite comparar propuestas políticas con información verificada.</div>
+        <div class="project-stack">
+          <span class="project-tech">Next.js</span>
+          <span class="project-tech">FastAPI</span>
+          <span class="project-tech">LangChain</span>
+          <span class="project-tech">Supabase</span>
+          <span class="project-tech">OpenAI</span>
+        </div>
+        <span class="project-link">En desarrollo →</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">DATA SCIENCE · DEPORTE</div>
+        <div class="project-name">Mundial Predictor 2026</div>
+        <div class="project-desc">Sistema predictivo de partidos de fútbol con ML. Supera en accuracy al modelo Elo tradicional. Dataset de +49,000 partidos internacionales. Pipeline completo de ciencia de datos.</div>
+        <div class="project-stack">
+          <span class="project-tech">Python</span>
+          <span class="project-tech">XGBoost</span>
+          <span class="project-tech">scikit-learn</span>
+          <span class="project-tech">LightGBM</span>
+          <span class="project-tech">Pandas</span>
+          <span class="project-tech">FastAPI</span>
+        </div>
+        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">VISIÓN COMPUTACIONAL · TRANSPORTE</div>
+        <div class="project-name">HackatónATU</div>
+        <div class="project-desc">Optimización de flota del Metropolitano de Lima con visión computacional en tiempo real. Detección de personas y buses por video. Conecta directamente telecomunicaciones con IA aplicada.</div>
+        <div class="project-stack">
+          <span class="project-tech">YOLOv8</span>
+          <span class="project-tech">OpenCV</span>
+          <span class="project-tech">Flask</span>
+          <span class="project-tech">Python</span>
+          <span class="project-tech">GNS3</span>
+        </div>
+        <span class="project-link">Hackathon ATU →</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">CONSTRUCCIÓN · IA</div>
+        <div class="project-name">Agentes Axiora</div>
+        <div class="project-desc">Agente BIM para interpretar modelos de construcción y agente documental para búsqueda inteligente de contratos, reportes y documentos técnicos. En producción con AWS Bedrock.</div>
+        <div class="project-stack">
+          <span class="project-tech">AWS Bedrock</span>
+          <span class="project-tech">Lambda</span>
+          <span class="project-tech">IFC/BIM</span>
+          <span class="project-tech">Python</span>
+          <span class="project-tech">Docker</span>
+        </div>
+        <a href="https://github.com/KevinPinto123" class="project-link" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PREMIOS -->
+<section id="premios">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">LOGROS</div>
+      <h2 class="section-title">Premios &amp; <em>Reconocimientos</em></h2>
+    </div>
+    <div class="awards-list">
+
+      <div class="award-item">
+        <div class="award-year">2025</div>
+        <div>
+          <div class="award-name">Startup Ganadora — StartUp Perú 12G</div>
+          <div class="award-org">StartUp Perú · PRODUCE</div>
+          <div class="award-desc">Axiora AI seleccionada como startup ganadora del programa de emprendimiento más importante del país. IA aplicada a la industria de la construcción.</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-year">2025</div>
+        <div>
+          <div class="award-name">Director de Tecnología — Developer Student Club UNI</div>
+          <div class="award-org">IEEE · UNI</div>
+          <div class="award-desc">Liderazgo tecnológico del capítulo universitario más activo de ingeniería en la UNI.</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-year">2025</div>
+        <div>
+          <div class="award-name">Campus Director — Impact Startup Competition</div>
+          <div class="award-org">Impact · UNI</div>
+          <div class="award-desc">Seleccionado para liderar el ecosistema de emprendimiento en la UNI, conectando estudiantes con oportunidades de innovación.</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-year">2024</div>
+        <div>
+          <div class="award-name">Finalista — Hackathón BCP (ChambApp)</div>
+          <div class="award-org">Banco de Crédito del Perú</div>
+          <div class="award-desc">Plataforma de conexión talento-empresas construida con TanStack Start + Cloudflare Workers. Stack de producción en edge computing.</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-year">2024</div>
+        <div>
+          <div class="award-name">Reconocimiento — Hackatón Juvenil</div>
+          <div class="award-org">Junior Achievement Perú</div>
+          <div class="award-desc">Participación destacada en el ecosistema de emprendimiento e innovación juvenil a nivel nacional.</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-year">2023</div>
+        <div>
+          <div class="award-name">Quinto Superior · Promedio 14/20</div>
+          <div class="award-org">FIEE — Universidad Nacional de Ingeniería</div>
+          <div class="award-desc">Distinción académica mantenida desde el inicio de la carrera. Ranking en el top 20% de la facultad.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCACIÓN -->
+<section id="educacion">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">EDUCACIÓN</div>
+      <h2 class="section-title">Formación &amp; <em>Idiomas</em></h2>
+    </div>
+    <div class="edu-grid">
+
+      <div>
+        <div class="edu-block" style="margin-bottom:1.5rem;">
+          <div class="edu-block-title">// EDUCACIÓN FORMAL</div>
+          <div class="edu-item">
+            <div class="edu-period">2023 — 2028</div>
+            <div class="edu-name">B.Sc. Ingeniería de Telecomunicaciones</div>
+            <div class="edu-place">Universidad Nacional de Ingeniería (UNI) · FIEE</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-period">CISCO NETWORKING ACADEMY</div>
+            <div class="edu-name">Redes, Ciberseguridad &amp; Ciencia de Datos</div>
+            <div class="edu-place">Cisco</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-period">AWS ACADEMY</div>
+            <div class="edu-name">Cloud Computing &amp; Arquitecturas Escalables</div>
+            <div class="edu-place">Amazon Web Services</div>
+          </div>
+        </div>
+
+        <div class="edu-block">
+          <div class="edu-block-title">// IDIOMAS</div>
+          <div class="lang-item">
+            <span class="lang-name">Español</span>
+            <span class="lang-level">C2 Nativo</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">Inglés</span>
+            <span class="lang-level">Intermedio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-block">
+        <div class="edu-block-title">// CERTIFICACIONES</div>
+
+        <div class="cert-item">
+          <div class="cert-year">2025</div>
+          <div>
+            <div class="cert-name">AWS Academy Graduate</div>
+            <div class="cert-issuer">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-year">2025</div>
+          <div>
+            <div class="cert-name">Cisco Cybersecurity</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-year">2025</div>
+          <div>
+            <div class="cert-name">Cisco Data Science</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-year">2024</div>
+          <div>
+            <div class="cert-name">IEEE CIS — Programa de Formación</div>
+            <div class="cert-issuer">IEEE Computational Intelligence Society</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-year">2024</div>
+          <div>
+            <div class="cert-name">Bootcamp LATAM — Desarrollo</div>
+            <div class="cert-issuer">Bootcamp LATAM</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-year">2023</div>
+          <div>
+            <div class="cert-name">Cisco CCNA Networking</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--border);">
+          <div class="edu-block-title" style="margin-bottom:0.75rem;">// PARTICIPACIONES</div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="stack-full-tag">Hackatón Juvenil 2025</span>
+            <span class="stack-full-tag">Bootcamp LATAM</span>
+            <span class="stack-full-tag">Programas IEEE</span>
+            <span class="stack-full-tag">StartUp Perú Ecosystem</span>
+            <span class="stack-full-tag">Junior Achievement</span>
+            <span class="stack-full-tag">ISC UNI</span>
+            <span class="stack-full-tag">Congreso Pragmático</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-tagline">¿Construimos algo <em>juntos</em>?</h2>
+        <p class="contact-sub">Siempre abierto a proyectos de impacto, colaboraciones, mentorías y oportunidades en IA, telecomunicaciones y desarrollo. Escríbeme.</p>
+        <div class="contact-links">
+          <a href="mailto:kevin.pinto.a@uni.pe" class="contact-link">
+            <span class="contact-link-icon">EMAIL</span>
+            <span class="contact-link-val">kevin.pinto.a@uni.pe</span>
+          </a>
+          <a href="https://www.linkedin.com/in/kevin-pinto-acevedo" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-link-icon">LINKEDIN</span>
+            <span class="contact-link-val">/in/kevin-pinto-acevedo</span>
+          </a>
+          <a href="https://github.com/KevinPinto123" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-link-icon">GITHUB</span>
+            <span class="contact-link-val">@KevinPinto123</span>
+          </a>
+          <a href="https://tiktok.com/@kedev21" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-link-icon">TIKTOK</span>
+            <span class="contact-link-val">@kedev21</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-propuesta">
+        <div class="propuesta-label">// PROPUESTA DE VALOR</div>
+        <div class="propuesta-text">"Transformo problemas complejos en soluciones tecnológicas escalables combinando liderazgo, inteligencia artificial, desarrollo de software y visión de impacto social."</div>
+        <div class="propuesta-areas">
+          <span class="propuesta-area">Inteligencia Artificial</span>
+          <span class="propuesta-area">Agentes IA</span>
+          <span class="propuesta-area">Full Stack</span>
+          <span class="propuesta-area">Telecomunicaciones</span>
+          <span class="propuesta-area">Data Science</span>
+          <span class="propuesta-area">GovTech</span>
+          <span class="propuesta-area">EdTech</span>
+          <span class="propuesta-area">TravelTech</span>
+          <span class="propuesta-area">Automatización</span>
+          <span class="propuesta-area">Liderazgo Tech</span>
+          <span class="propuesta-area">Product Management</span>
+          <span class="propuesta-area">ConstruTech</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Kevin Eduardo Pinto Acevedo — KEDEV</span>
+  <span>UNI · FIEE · Lima, Perú</span>
+</footer>
+
+<button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+
+<script>
+  const menuButton = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const backToTop = document.querySelector('.back-to-top');
+  const sections = [...document.querySelectorAll('main section')];
+  const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+
+  menuButton.addEventListener('click', () => {
+    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+    navLinks.classList.toggle('open', !isOpen);
+  });
+
+  sectionLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Abrir menú');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  document.querySelectorAll('.section-header, .stack-item, .timeline-item, .project-card, .award-item, .edu-block, .contact-inner')
+    .forEach((element) => element.classList.add('reveal'));
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      sectionLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+
+  sections.forEach((section) => sectionObserver.observe(section));
+
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kevinpinto123.github.io/kevin-pinto-acevedo.github.io/sitemap.xml
